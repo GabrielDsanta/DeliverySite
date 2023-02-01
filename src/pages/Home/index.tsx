@@ -1,9 +1,28 @@
-import { ContainerHome } from './styles'
+import { Card } from '../../components/Card'
+import { ContainerHome, ContainerFilter, ContainerRestaurants } from './styles'
 
 export function Home() {
   return (
     <ContainerHome>
-      <h1>Home</h1>
+      <ContainerFilter>
+        <select name="" id="">
+          <option value=""></option>
+        </select>
+        <select name="" id="">
+          <option value=""></option>
+        </select>
+      </ContainerFilter>
+      <h1>Restaurantes</h1>
+      <ContainerRestaurants>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </ContainerRestaurants>
     </ContainerHome>
   )
 }
