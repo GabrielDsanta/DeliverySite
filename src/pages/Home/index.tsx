@@ -1,33 +1,27 @@
-import { Card } from '../../components/Card'
-import { ContainerHome, ContainerFilter, ContainerRestaurants } from './styles'
+import { useContext, useEffect } from 'react'
+import { CardList } from '../../components/CardList'
+import { Filter } from '../../components/Filter'
+import { DeliveryContext } from '../../context/DeliveryContext'
+import { fetchData } from '../../services/restaurant'
+import { ContainerHome, ContainerRestaurants } from './styles'
 
 export function Home() {
+  const { CallSetRestaurants, restaurants } = useContext(DeliveryContext)
+
+  useEffect(() => {
+    (async () => {
+      const data = await fetchData()
+      CallSetRestaurants(data)
+    })()
+  }, [])
+
   return (
     <ContainerHome>
-      <ContainerFilter>
-        <select name="" id="">
-          <option value="" disabled selected>
-            Categoria
-          </option>
-          <option value=""></option>
-        </select>
-        <select name="" id="">
-          <option value="" disabled selected>
-            Ordenar
-          </option>
-          <option value=""></option>
-        </select>
-      </ContainerFilter>
+      <Filter />
       <h1>Restaurantes</h1>
+
       <ContainerRestaurants>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <CardList restaurants={restaurants!} />
       </ContainerRestaurants>
     </ContainerHome>
   )
