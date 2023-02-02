@@ -9,11 +9,11 @@ export function Home() {
   const { CallSetRestaurants, restaurants } = useContext(DeliveryContext)
 
   useEffect(() => {
-    (async () => {
+    ; (async () => {
       const data = await fetchData()
       CallSetRestaurants(data)
     })()
-  }, [])
+  }, [CallSetRestaurants])
 
   return (
     <ContainerHome>

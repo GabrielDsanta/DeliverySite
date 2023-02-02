@@ -4,8 +4,7 @@ export const ContainerCard = styled.div`
   width: 25rem;
   height: 7rem;
 
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
 
   display: flex;
   align-items: center;
@@ -17,7 +16,9 @@ export const ContainerCard = styled.div`
   background: ${(props) => props.theme.white};
 
   img {
-    margin: 0.3125rem 1rem 0.3125rem 0.3125rem;
+    width: 80px;
+    height: 80px;
+    margin: 1rem;
   }
 `
 export const RestaurantInformation = styled.header`

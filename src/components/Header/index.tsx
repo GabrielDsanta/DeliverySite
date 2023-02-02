@@ -1,3 +1,5 @@
+import * as Dialog from '@radix-ui/react-dialog'
+import { NewRestaurantModal } from '../NewRestaurantModal'
 import { ContainerHeader, ContainerSearch, SearchBar } from './styles'
 import { PlusCircle, Bookmark, MagnifyingGlass } from 'phosphor-react'
 export function Header() {
@@ -14,8 +16,12 @@ export function Header() {
         />
       </ContainerSearch>
       <div>
-        <PlusCircle size={45} color="#DBF227" />
-
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <PlusCircle size={45} color="#DBF227" />
+          </Dialog.Trigger>
+          <NewRestaurantModal />
+        </Dialog.Root>
         <Bookmark size={45} color="#DBF227" />
       </div>
     </ContainerHeader>
