@@ -1,24 +1,25 @@
-import logo from '../../../.././assets/img- logo.svg'
+import { Food } from '../../../../models/food'
 import {
   ContainerCardProduct,
   ProductInformation,
   ValueAndQuantity,
 } from './styles'
-export function CardProduct() {
+
+
+export function CardProduct({ descricao, nome, valor, valorPromocional, url }: Food) {
   return (
     <ContainerCardProduct>
       <ProductInformation>
-        <h3>Produto 1</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In posuere
-          sem eget semper egestas.
-        </p>
+        <h3>{nome}</h3>
+        <p>{descricao}</p>
         <ValueAndQuantity>
-          <p>R$ 99,99</p>
-          <input type="number" min={0} />
+          <p>{valor}</p>
+          <button>
+
+          </button>
         </ValueAndQuantity>
       </ProductInformation>
-      <img src={logo} alt="" />
+      <img src={url} alt="" />
     </ContainerCardProduct>
   )
 }

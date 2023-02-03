@@ -8,7 +8,7 @@ export const ContainerCard = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   border-radius: 6px;
 
@@ -19,6 +19,10 @@ export const ContainerCard = styled.div`
     width: 80px;
     height: 80px;
     margin: 1rem;
+  }
+
+  :hover{
+    cursor: pointer;
   }
 `
 export const RestaurantInformation = styled.header`

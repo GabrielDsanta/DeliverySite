@@ -14,5 +14,5 @@ export const ContainerHome = styled.div`
 
 export const ContainerRestaurants = styled.main`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
 `

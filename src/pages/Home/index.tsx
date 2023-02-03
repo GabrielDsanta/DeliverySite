@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import { CardList } from '../../components/CardList'
 import { Filter } from '../../components/Filter'
 import { DeliveryContext } from '../../context/DeliveryContext'
-import { fetchData } from '../../services/restaurant'
+import { fetchDataRestaurant } from '../../services/restaurant'
 import { ContainerHome, ContainerRestaurants } from './styles'
 
 export function Home() {
@@ -10,7 +10,7 @@ export function Home() {
 
   useEffect(() => {
     ; (async () => {
-      const data = await fetchData()
+      const data = await fetchDataRestaurant()
       CallSetRestaurants(data)
     })()
   }, [CallSetRestaurants])
