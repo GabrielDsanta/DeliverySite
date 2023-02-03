@@ -2,11 +2,11 @@ import { createContext, ReactNode, useState } from 'react'
 import { Food } from '../models/food'
 import { Restaurant } from '../models/restaurant'
 
-interface DeliveryContextType { 
+interface DeliveryContextType {
   restaurants: Restaurant[] | null
-  CallSetRestaurants: (data: Restaurant[]) => void
   foods: Food[] | null
   CallSetFoods: (data: Food[]) => void
+  CallSetRestaurants: (data: Restaurant[]) => void
 }
 
 interface DeliveryProviderProps {
@@ -19,11 +19,11 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
   const [restaurants, setRestaurants] = useState<Restaurant[] | null>(null)
   const [foods, setFoods] = useState<Food[] | null>(null)
 
-  function CallSetRestaurants(data: Restaurant[]){
+  function CallSetRestaurants(data: Restaurant[]) {
     setRestaurants(data)
   }
 
-  function CallSetFoods(data: Food[]){
+  function CallSetFoods(data: Food[]) {
     setFoods(data)
   }
 

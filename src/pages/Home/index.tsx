@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
-import { CardList } from '../../components/CardList'
-import { Filter } from '../../components/Filter'
+import { CardList } from './components/CardList'
+import { Filter } from './components/Filter'
 import { DeliveryContext } from '../../context/DeliveryContext'
 import { fetchDataRestaurant } from '../../services/restaurant'
 import { ContainerHome, ContainerRestaurants } from './styles'

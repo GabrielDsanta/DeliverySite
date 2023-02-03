@@ -5,8 +5,13 @@ import {
   ValueAndQuantity,
 } from './styles'
 
-
-export function CardProduct({ descricao, nome, valor, valorPromocional, url }: Food) {
+export function CardProduct({
+  descricao,
+  nome,
+  valor,
+  valorPromocional,
+  url,
+}: Food) {
   return (
     <ContainerCardProduct>
       <ProductInformation>
@@ -14,9 +19,7 @@ export function CardProduct({ descricao, nome, valor, valorPromocional, url }: F
         <p>{descricao}</p>
         <ValueAndQuantity>
           <p>{valor}</p>
-          <button>
-
-          </button>
+          <button></button>
         </ValueAndQuantity>
       </ProductInformation>
       <img src={url} alt="" />

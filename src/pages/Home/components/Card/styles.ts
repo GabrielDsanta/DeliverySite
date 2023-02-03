@@ -21,7 +21,7 @@ export const ContainerCard = styled.div`
     margin: 1rem;
   }
 
-  :hover{
+  :hover {
     cursor: pointer;
   }
 `

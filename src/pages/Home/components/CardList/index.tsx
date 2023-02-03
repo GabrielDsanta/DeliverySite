@@ -1,6 +1,6 @@
 import { Card } from '../Card'
 import { Container } from './styles'
-import { Restaurant } from '../../models/restaurant'
+import { Restaurant } from '../../../.././models/restaurant'
 
 interface CardListProps {
   restaurants: Restaurant[] | null

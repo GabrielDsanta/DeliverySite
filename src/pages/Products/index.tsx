@@ -1,12 +1,11 @@
 import { Star } from 'phosphor-react'
 import { ContainerProducts, RestaurantInformation, ProductList } from './styles'
-import { useLocation } from 'react-router-dom';
-import { Restaurant } from '../../models/restaurant';
-import { CardListProducts } from './components/CardListProducts';
-import { useContext, useEffect } from 'react';
-import { DeliveryContext } from '../../context/DeliveryContext';
-import { fetchDataFood } from '../../services/foods';
-
+import { useLocation } from 'react-router-dom'
+import { Restaurant } from '../../models/restaurant'
+import { CardListProducts } from './components/CardListProducts'
+import { useContext, useEffect } from 'react'
+import { DeliveryContext } from '../../context/DeliveryContext'
+import { fetchDataFood } from '../../services/foods'
 
 export function Products() {
   const location = useLocation()
@@ -16,7 +15,7 @@ export function Products() {
   const { CallSetFoods, foods } = useContext(DeliveryContext)
 
   useEffect(() => {
-    (async () => {
+    ; (async () => {
       const data = await fetchDataFood()
       const filteredList = data.filter((item) => {
         return item.idRestaurante === id
@@ -24,7 +23,7 @@ export function Products() {
 
       CallSetFoods(filteredList)
     })()
-  }, [])
+  }, [CallSetFoods, id])
 
   return (
     <ContainerProducts>

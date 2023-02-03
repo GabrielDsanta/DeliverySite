@@ -1,15 +1,30 @@
 import { Star } from 'phosphor-react'
-import { useNavigate } from 'react-router-dom';
-import { Restaurant } from '../../models/restaurant'
+import { useNavigate } from 'react-router-dom'
+import { Restaurant } from '../../../.././models/restaurant'
 import { ContainerCard, RestaurantInformation } from './styles'
 
-export function Card({ avaliacao, categoria, nome, sobre, url, id }: Restaurant) {
+export function Card({
+  avaliacao,
+  categoria,
+  nome,
+  sobre,
+  url,
+  id,
+}: Restaurant) {
   const navigate = useNavigate()
 
   function HandleLookUpRestaurant() {
-    navigate(`/products`, { state: { id: id, avaliacao: avaliacao, categoria: categoria, nome: nome, sobre: sobre, url: url } })
+    navigate(`/products`, {
+      state: {
+        id,
+        avaliacao,
+        categoria,
+        nome,
+        sobre,
+        url,
+      },
+    })
   }
-
 
   return (
     <ContainerCard onClick={HandleLookUpRestaurant}>

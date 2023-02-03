@@ -46,7 +46,4 @@ export const RestaurantInformation = styled.div`
     color: ${(props) => props.theme.yellow};
   }
 `
-export const ProductList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-`
+export const ProductList = styled.div``

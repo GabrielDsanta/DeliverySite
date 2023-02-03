@@ -1,7 +1,13 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { NewRestaurantModal } from '../NewRestaurantModal'
 import { ContainerHeader, ContainerSearch, SearchBar } from './styles'
-import { PlusCircle, Bookmark, MagnifyingGlass } from 'phosphor-react'
+import {
+  PlusCircle,
+  Bookmark,
+  MagnifyingGlass,
+  ShoppingCart,
+} from 'phosphor-react'
+import { ShoppingCartModal } from '../ShoppingCartModal'
 export function Header() {
   return (
     <ContainerHeader>
@@ -22,7 +28,15 @@ export function Header() {
           </Dialog.Trigger>
           <NewRestaurantModal />
         </Dialog.Root>
+
         <Bookmark size={45} color="#DBF227" />
+
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <ShoppingCart size={45} color="#DBF227" />
+          </Dialog.Trigger>
+          <ShoppingCartModal />
+        </Dialog.Root>
       </div>
     </ContainerHeader>
   )
