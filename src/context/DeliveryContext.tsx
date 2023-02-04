@@ -6,9 +6,12 @@ import { apiRestaurants } from '.././services/api'
 interface DeliveryContextType {
   restaurants: Restaurant[] | null
   foods: Food[] | null
+  productsCarts: Food[]
   CallSetFoods: (data: Food[]) => void
+  CallSetProductsCart: (data: Food) => void
   CallSetRestaurants: (data: Restaurant[]) => void
   CreateNewRestaurants: (data: Restaurant) => void
+  CallRemoveProductCart: (data: string) => void
 }
 
 interface DeliveryProviderProps {
@@ -20,8 +23,9 @@ export const DeliveryContext = createContext<DeliveryContextType>(
 )
 
 export function DeliveryProvider({ children }: DeliveryProviderProps) {
-  const [restaurants, setRestaurants] = useState<Restaurant[] | null>(null)
-  const [foods, setFoods] = useState<Food[] | null>(null)
+  const [foods, setFoods] = useState<Food[]>([])
+  const [productsCarts, setProductsCarts] = useState<Food[]>([])
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
 
   function CallSetRestaurants(data: Restaurant[]) {
     setRestaurants(data)
@@ -30,10 +34,14 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
   function CallSetFoods(data: Food[]) {
     setFoods(data)
   }
-
+  function CallSetProductsCart(data: Food) {
+    setProductsCarts((state) => [...state, data])
+  }
+  function CallRemoveProductCart(data: string) {
+    setProductsCarts(productsCarts.filter((item) => item.nome !== data))
+  }
   async function CreateNewRestaurants(data: Restaurant) {
-    const { url, nome, categoria, sobre, id } = data
-
+    const { url, categoria, id, nome, sobre } = data
     const response = await apiRestaurants.post('/restaurantes', {
       url,
       nome,
@@ -43,17 +51,20 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
       id,
     })
 
-    setRestaurants((state) => [{ ...state }, response.data])
+    setRestaurants((state) => [...state, response.data])
   }
 
   return (
     <DeliveryContext.Provider
       value={{
-        restaurants,
-        CallSetRestaurants,
         foods,
+        restaurants,
+        productsCarts,
         CallSetFoods,
+        CallSetRestaurants,
+        CallSetProductsCart,
         CreateNewRestaurants,
+        CallRemoveProductCart,
       }}
     >
       {children}

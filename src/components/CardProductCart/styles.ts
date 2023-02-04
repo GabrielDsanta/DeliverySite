@@ -4,7 +4,7 @@ export const ContainerCardProductCard = styled.div`
   width: 35rem;
 
   padding: 1rem;
-  margin: 2rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
 
   border-radius: 6px;
 

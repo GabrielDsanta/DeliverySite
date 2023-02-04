@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { DeliveryContext } from '../../../../context/DeliveryContext'
 import { Food } from '../../../../models/food'
 import {
   ContainerCardProduct,
@@ -12,6 +14,17 @@ export function CardProduct({
   valorPromocional,
   url,
 }: Food) {
+  const { CallSetProductsCart } = useContext(DeliveryContext)
+
+  function handleAddProductCart() {
+    const data = {
+      descricao,
+      nome,
+      valor,
+      url,
+    }
+    CallSetProductsCart(data)
+  }
   return (
     <ContainerCardProduct>
       <ProductInformation>
@@ -19,7 +32,7 @@ export function CardProduct({
         <p>{descricao}</p>
         <ValueAndQuantity>
           <p>{valor}</p>
-          <button></button>
+          <button onClick={handleAddProductCart}>Comprar</button>
         </ValueAndQuantity>
       </ProductInformation>
       <img src={url} alt="" />

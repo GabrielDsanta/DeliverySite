@@ -1,21 +1,26 @@
+import { useContext } from 'react'
+import { DeliveryContext } from '../../context/DeliveryContext'
+import { Food } from '../../models/food'
 import {
   ContainerCardProductCard,
   ValueAndQuantity,
   Description,
 } from './styles'
 
-export function CardProductCart() {
+export function CardProductCart({ descricao, nome, valor }: Food) {
+  const { CallRemoveProductCart } = useContext(DeliveryContext)
+
+  function handleRemoveProductCart() {
+    CallRemoveProductCart(nome)
+  }
   return (
     <ContainerCardProductCard>
       <ValueAndQuantity>
-        <p>1x Produto 1</p>
-        <p>99.90</p>
+        <p>1x {nome}</p>
+        <p>{valor}</p>
       </ValueAndQuantity>
-      <Description>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero ullam
-        distinctio at debitis, asperiores error, veniam ad ratione incidunt,
-      </Description>
-      <button>Remover</button>
+      <Description>{descricao}</Description>
+      <button onClick={handleRemoveProductCart}>Remover</button>
     </ContainerCardProductCard>
   )
 }

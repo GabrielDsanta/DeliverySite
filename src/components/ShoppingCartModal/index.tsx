@@ -1,5 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'phosphor-react'
+import { useContext } from 'react'
+import { DeliveryContext } from '../../context/DeliveryContext'
 import { CardProductCart } from '../CardProductCart'
 import {
   Content,
@@ -11,6 +13,7 @@ import {
 } from './styles'
 
 export function ShoppingCartModal() {
+  const { productsCarts } = useContext(DeliveryContext)
   return (
     <Dialog.Portal>
       <Overlay />
@@ -20,9 +23,16 @@ export function ShoppingCartModal() {
           <X size={22} /> Seus Pedidos
         </CloseButton>
         <Products>
-          <CardProductCart />
-          <CardProductCart />
-          <CardProductCart />
+          {productsCarts.map((item) => {
+            return (
+              <CardProductCart
+                key={item.id}
+                descricao={item.descricao}
+                nome={item.nome}
+                valor={item.valor}
+              />
+            )
+          })}
         </Products>
         <Checkout>
           <TotalOfProducts>

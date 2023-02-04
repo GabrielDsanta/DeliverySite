@@ -1,10 +1,10 @@
 export interface Food {
-  idRestaurante: number
+  idRestaurante?: number
   nome: string
-  url: string
+  url?: string
   valor: number
-  promocao: boolean
-  valorPromocional: number
+  promocao?: boolean
+  valorPromocional?: number
   descricao: string
-  id: number
+  id?: number
 }
