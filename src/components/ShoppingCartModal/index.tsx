@@ -1,8 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'phosphor-react'
 import { useContext } from 'react'
-import { DeliveryContext } from '../../context/DeliveryContext'
+import { useTotal } from '../../hooks/useTotal'
 import { CardProductCart } from '../CardProductCart'
+import { DeliveryContext } from '../../context/DeliveryContext'
 import {
   Content,
   Overlay,
@@ -13,6 +14,7 @@ import {
 } from './styles'
 
 export function ShoppingCartModal() {
+  const total = useTotal()
   const { productsCarts } = useContext(DeliveryContext)
   return (
     <Dialog.Portal>
@@ -37,7 +39,7 @@ export function ShoppingCartModal() {
         <Checkout>
           <TotalOfProducts>
             <p>Total</p>
-            <p>99,90</p>
+            <p>{total.total}</p>
           </TotalOfProducts>
           <button>Finalizar Compra</button>
         </Checkout>
