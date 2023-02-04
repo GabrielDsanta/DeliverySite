@@ -2,17 +2,19 @@ import { useContext } from 'react'
 import { DeliveryContext } from '../context/DeliveryContext'
 
 export function useTotal() {
-  const { productsCarts } = useContext(DeliveryContext)
+  const { cart } = useContext(DeliveryContext)
 
-  const total = productsCarts.reduce(
-    (acc, product) => {
-      acc.total += product.valor
-      return acc
-    },
-    {
-      total: 0,
-    },
-  )
+  if (cart?.length! > 0) {
+    const total = cart!.reduce(
+      (acc, product) => {
+        acc.total += product.product.valor
+        return acc
+      },
+      {
+        total: 0,
+      },
+    )
 
-  return total
+    return total
+  }
 }

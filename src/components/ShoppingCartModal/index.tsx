@@ -15,7 +15,8 @@ import {
 
 export function ShoppingCartModal() {
   const total = useTotal()
-  const { productsCarts } = useContext(DeliveryContext)
+  const { cart } = useContext(DeliveryContext)
+
   return (
     <Dialog.Portal>
       <Overlay />
@@ -25,21 +26,25 @@ export function ShoppingCartModal() {
           <X size={22} /> Seus Pedidos
         </CloseButton>
         <Products>
-          {productsCarts.map((item) => {
-            return (
-              <CardProductCart
-                key={item.id}
-                descricao={item.descricao}
-                nome={item.nome}
-                valor={item.valor}
-              />
-            )
-          })}
+          {cart?.length! > 0 && (
+            cart!.map((item) => {
+              return (
+                <CardProductCart
+                  key={item.id}
+                  amount={item.amount}
+                  id={item.id}
+                  product={item.product}
+                />
+              )
+            })
+          )}
         </Products>
         <Checkout>
           <TotalOfProducts>
             <p>Total</p>
-            <p>{total.total}</p>
+            {total !== undefined && (
+              <p>{total!.total}</p>
+            )}
           </TotalOfProducts>
           <button>Finalizar Compra</button>
         </Checkout>

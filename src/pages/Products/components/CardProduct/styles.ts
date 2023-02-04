@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const ContainerCardProduct = styled.div`
-  width: 24rem;
-  height: 8rem;
+  width: 25rem;
+  height: 11rem;
   margin: 1rem;
+  border-radius: 6px;
 
   display: flex;
   align-items: center;
@@ -16,6 +17,7 @@ export const ContainerCardProduct = styled.div`
     margin-right: 1rem;
     width: 100px;
     height: 100px;
+    margin-top: 1rem;
   }
 `
 export const ProductInformation = styled.div`
@@ -44,14 +46,35 @@ export const ValueAndQuantity = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  p {
+
+  h2 {
     color: #3c3c3c;
     font-weight: 400;
     line-height: 100%;
     font-size: 0.9375rem;
+    margin-right: -5rem;
   }
+
+  p {
+    text-decoration: line-through;
+    color: rgba(165, 164, 164, 1);
+    font-weight: 400;
+    line-height: 100%;
+    font-size: 0.9375rem;
+  }
+
   input {
     width: 3.75rem;
     height: 1.875rem;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .2rem;
   }
 `
