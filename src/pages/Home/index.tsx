@@ -9,7 +9,7 @@ export function Home() {
   const { CallSetRestaurants, restaurants } = useContext(DeliveryContext)
 
   useEffect(() => {
-    ; (async () => {
+    (async () => {
       const data = await fetchDataRestaurant()
       CallSetRestaurants(data)
     })()

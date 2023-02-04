@@ -54,7 +54,8 @@ export const RestaurantInformation = styled.header`
       line-height: 16px;
       font-size: 1rem;
 
-      color: ${(props) => props.theme.yellow};
+      color: black;
+      margin-left: .2rem;
     }
   }
 

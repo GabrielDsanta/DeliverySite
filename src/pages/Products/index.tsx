@@ -36,7 +36,7 @@ export function Products() {
           {avaliacao}
         </span>
       </RestaurantInformation>
-      <p>Produtos</p>
+      <h1>Produtos</h1>
 
       <ProductList>
         <CardListProducts foods={foods} />
