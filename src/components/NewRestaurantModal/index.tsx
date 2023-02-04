@@ -4,22 +4,27 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Overlay, Content, Inputs, CloseButton } from './styles'
 import { X } from 'phosphor-react'
+import { useContext } from 'react'
+import { DeliveryContext } from '../../context/DeliveryContext'
 const newRestaurantFormSchema = z.object({
-  name: z.string(),
-  category: z.string(),
-  about: z.string(),
-  urlLogo: z.string(),
+  nome: z.string(),
+  categoria: z.string(),
+  sobre: z.string(),
+  url: z.string(),
+  avaliacao: z.number(),
+  id: z.number(),
 })
 
 type newRestaurantInputs = z.infer<typeof newRestaurantFormSchema>
 
 export function NewRestaurantModal() {
+  const { CreateNewRestaurants } = useContext(DeliveryContext)
   const { register, handleSubmit, reset } = useForm<newRestaurantInputs>({
     resolver: zodResolver(newRestaurantFormSchema),
   })
 
   function handleCreateNewRestaurant(data: newRestaurantInputs) {
-    console.log(data)
+    CreateNewRestaurants(data)
     reset()
   }
 
@@ -37,22 +42,22 @@ export function NewRestaurantModal() {
         <form action="" onSubmit={handleSubmit(handleCreateNewRestaurant)}>
           <Inputs>
             <label htmlFor="name">Nome:</label>
-            <input type="text" id="name" required {...register('name')} />
+            <input type="text" id="name" required {...register('nome')} />
 
             <label htmlFor="">Categoria:</label>
             <input
               type="text"
               id="category"
               required
-              {...register('category')}
+              {...register('categoria')}
             />
 
             <label htmlFor="urlLogo">Url da logo:</label>
-            <input type="text" id="urlLogo" required {...register('urlLogo')} />
+            <input type="text" id="urlLogo" required {...register('url')} />
           </Inputs>
           <Inputs>
             <label htmlFor="about">Sobre:</label>
-            <textarea id="about" required {...register('about')}></textarea>
+            <textarea id="about" required {...register('sobre')}></textarea>
             <button type="submit">Cadastrar</button>
           </Inputs>
         </form>

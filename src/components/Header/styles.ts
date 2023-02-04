@@ -21,6 +21,8 @@ export const ContainerHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    cursor: pointer;
   }
 `
 export const ContainerSearch = styled.div`
