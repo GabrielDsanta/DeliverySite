@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const ContainerProducts = styled.div`
   width: 65vw;
-  height: 100vh;
   margin: 0 auto;
 
   display: flex;
@@ -11,7 +10,7 @@ export const ContainerProducts = styled.div`
 
   background: ${(props) => props.theme['dark-grey']};
 
-  h1{
+  h1 {
     margin-top: 1rem;
     color: black;
   }

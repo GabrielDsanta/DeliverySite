@@ -34,6 +34,7 @@ export const Content = styled(Dialog.Content)`
 export const CloseButton = styled(Dialog.Close)`
   gap: 1rem;
   display: flex;
+
   align-items: center;
 
   color: black;
@@ -57,9 +58,22 @@ export const CloseButton = styled(Dialog.Close)`
   }
 `
 export const Products = styled.div`
+  height: 100%;
   display: flex;
 
   flex-direction: column;
+
+  overflow: hidden;
+  overflow-y: scroll;
+  &&::-webkit-scrollbar {
+    width: 6px;
+    height: 0.5rem;
+    background-color: white;
+  }
+  &&::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 6px;
+  }
 `
 
 export const Checkout = styled.div`
@@ -68,18 +82,6 @@ export const Checkout = styled.div`
   align-items: center;
   justify-content: end;
   flex-direction: column;
-
-  button {
-    width: 20rem;
-    height: 2.5rem;
-    margin-top: 1rem;
-
-    border: 0;
-    outline: none;
-
-    background: red;
-    color: ${(props) => props.theme.white};
-  }
 `
 export const TotalOfProducts = styled.div`
   width: 25rem;
@@ -89,4 +91,20 @@ export const TotalOfProducts = styled.div`
 
   font-weight: 600;
   font-size: 1.5rem;
+`
+export const CheckoutButton = styled(Dialog.Close)`
+  border: 0;
+  outline: none;
+  background: transparent;
+  button {
+    width: 20rem;
+    height: 2.5rem;
+    margin-top: 1rem;
+
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    background: red;
+    color: ${(props) => props.theme.white};
+  }
 `

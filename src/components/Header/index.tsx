@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { NewRestaurantModal } from '../NewRestaurantModal'
-import { ContainerHeader, ContainerSearch, SearchBar } from './styles'
+import { ContainerHeader, ContainerSearch, HomeLink, SearchBar } from './styles'
 import {
   PlusCircle,
   Bookmark,
@@ -8,10 +8,13 @@ import {
   ShoppingCart,
 } from 'phosphor-react'
 import { ShoppingCartModal } from '../ShoppingCartModal'
+
 export function Header() {
   return (
     <ContainerHeader>
-      <h1>Food App</h1>
+      <HomeLink to={'/'}>
+        <h1>Food App</h1>
+      </HomeLink>
       <ContainerSearch>
         <MagnifyingGlass size={20} color="#3C3C3C" weight="thin" />
         <SearchBar

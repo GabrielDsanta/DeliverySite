@@ -9,8 +9,18 @@ import {
   ValueAndQuantity,
 } from './styles'
 import { Order } from '../../../../models/order'
+import { priceFormatter } from '../../../../utils/formatter'
 
-export function CardProduct({ descricao, nome, valor, valorPromocional, url, id, idRestaurante, promocao }: Food) {
+export function CardProduct({
+  descricao,
+  nome,
+  valor,
+  valorPromocional,
+  url,
+  id,
+  idRestaurante,
+  promocao,
+}: Food) {
   const { HandleAddCart } = useContext(DeliveryContext)
   const [amount, setAmount] = useState(0)
 
@@ -18,18 +28,18 @@ export function CardProduct({ descricao, nome, valor, valorPromocional, url, id,
     setAmount(amount + 1)
 
     const newOrder: Order = {
-      amount: amount,
+      amount,
       product: {
-        descricao: descricao,
-        id: id,
-        idRestaurante: idRestaurante,
-        nome: nome,
-        promocao: promocao,
-        url: url,
-        valor: valor,
-        valorPromocional: valorPromocional
+        descricao,
+        id,
+        idRestaurante,
+        nome,
+        promocao,
+        url,
+        valor,
+        valorPromocional,
       },
-      id: v4()
+      id: v4(),
     }
 
     HandleAddCart(newOrder)
@@ -41,9 +51,9 @@ export function CardProduct({ descricao, nome, valor, valorPromocional, url, id,
         <h3>{nome}</h3>
         <p>{descricao}</p>
         <ValueAndQuantity>
-          <h2>R$ {valor} </h2>
+          <h2> {priceFormatter.format(valor)} </h2>
           {valorPromocional! > 0 && (
-            <p >R$ {valorPromocional}</p>
+            <p>{priceFormatter.format(valorPromocional)}</p>
           )}
 
           <button onClick={HandleAddProductCart}>

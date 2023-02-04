@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { DeliveryContext } from '../../context/DeliveryContext'
 import { Order } from '../../models/order'
+import { priceFormatter } from '../../utils/formatter'
 import {
   ContainerCardProductCard,
   ValueAndQuantity,
@@ -18,7 +19,7 @@ export function CardProductCart({ amount, id, product }: Order) {
     <ContainerCardProductCard>
       <ValueAndQuantity>
         <p>1x {product.nome}</p>
-        <p>{product.valor}</p>
+        <p>{priceFormatter.format(product.valor)}</p>
       </ValueAndQuantity>
       <Description>{product.descricao}</Description>
       <button onClick={handleRemoveProductCart}>Remover</button>

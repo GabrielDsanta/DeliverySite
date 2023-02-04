@@ -11,7 +11,10 @@ import {
   Products,
   TotalOfProducts,
   Checkout,
+  CheckoutButton,
 } from './styles'
+import { NavLink } from 'react-router-dom'
+import { priceFormatter } from '../../utils/formatter'
 
 export function ShoppingCartModal() {
   const total = useTotal()
@@ -26,7 +29,7 @@ export function ShoppingCartModal() {
           <X size={22} /> Seus Pedidos
         </CloseButton>
         <Products>
-          {cart?.length! > 0 && (
+          {cart?.length! > 0 &&
             cart!.map((item) => {
               return (
                 <CardProductCart
@@ -36,17 +39,20 @@ export function ShoppingCartModal() {
                   product={item.product}
                 />
               )
-            })
-          )}
+            })}
         </Products>
         <Checkout>
           <TotalOfProducts>
             <p>Total</p>
             {total !== undefined && (
-              <p>{total!.total}</p>
+              <p>{priceFormatter.format(total!.total)}</p>
             )}
           </TotalOfProducts>
-          <button>Finalizar Compra</button>
+          <NavLink to={'/Shopping'}>
+            <CheckoutButton>
+              <button>Finalizar Compra</button>
+            </CheckoutButton>
+          </NavLink>
         </Checkout>
       </Content>
     </Dialog.Portal>

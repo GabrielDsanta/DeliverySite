@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const ContainerHeader = styled.header`
@@ -10,7 +11,6 @@ export const ContainerHeader = styled.header`
 
   color: ${(props) => props.theme.white};
   background: ${(props) => props.theme['blue-dark']};
-
   h1 {
     margin-left: 0.5rem;
   }
@@ -55,4 +55,8 @@ export const SearchBar = styled.input`
     font-weight: 700;
     line-height: 18px;
   }
+`
+export const HomeLink = styled(NavLink)`
+  color: white;
+  text-decoration: none;
 `

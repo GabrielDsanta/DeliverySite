@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 export const ContainerCardProductCard = styled.div`
-  width: 35rem;
+  width: 30rem;
 
   padding: 1rem;
-  margin: 1rem 0 1rem 0;
+  margin: 2rem 1rem 1rem 0;
 
   border-radius: 6px;
 
