@@ -8,6 +8,7 @@ import {
   ShoppingCart,
 } from 'phosphor-react'
 import { ShoppingCartModal } from '../ShoppingCartModal'
+import { NavLink } from 'react-router-dom'
 
 export function Header() {
   return (
@@ -24,6 +25,7 @@ export function Header() {
           placeholder="Busque por restaurantes"
         />
       </ContainerSearch>
+
       <div>
         <Dialog.Root>
           <Dialog.Trigger asChild>
@@ -32,7 +34,9 @@ export function Header() {
           <NewRestaurantModal />
         </Dialog.Root>
 
-        <Bookmark size={45} color="#DBF227" />
+        <NavLink to={'/shopping'}>
+          <Bookmark size={45} color="#DBF227" />
+        </NavLink>
 
         <Dialog.Root>
           <Dialog.Trigger asChild>
