@@ -57,7 +57,7 @@ export function CardList({ restaurants }: CardListProps) {
       return setFilteredList(searchFilterList)
     }
 
-    if(searchFilter.length === 0){
+    if(searchFilter.length === 0 && rate === '' && filterCategory === ''){
       setFilteredList([])
     }
 
