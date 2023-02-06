@@ -9,7 +9,7 @@ interface CardListProps {
 }
 
 export function CardList({ restaurants }: CardListProps) {
-  const { filterCategory, rate } = useContext(DeliveryContext)
+  const { filterCategory, rate, searchFilter } = useContext(DeliveryContext)
   const [filteredList, setFilteredList] = useState<Restaurant[]>([])
 
   useEffect(() => {
@@ -38,11 +38,34 @@ export function CardList({ restaurants }: CardListProps) {
       })
     }
 
-  }, [filterCategory, rate])
+    if (searchFilter.length > 0) {
+      const searchFilterList: Restaurant[] = restaurants!.filter((item) => {
+        if (item.nome.includes(searchFilter)) {
+          return (
+            <Card
+              avaliacao={item.avaliacao}
+              categoria={item.categoria}
+              id={item.id}
+              nome={item.nome}
+              sobre={item.sobre}
+              url={item.url}
+              key={item.id}
+            />
+          )
+        }
+      })
+      return setFilteredList(searchFilterList)
+    }
+
+    if(searchFilter.length === 0){
+      setFilteredList([])
+    }
+
+  }, [filterCategory, rate, searchFilter])
 
   return (
     <Container>
-      {filteredList.length === 0 ? (
+      {filteredList!.length === 0 ? (
         restaurants?.map((item) => {
           return (
             <Card
@@ -58,7 +81,7 @@ export function CardList({ restaurants }: CardListProps) {
         })
       ) :
         (
-          filteredList.map((item) => {
+          filteredList!.map((item) => {
             return (
               <Card
                 avaliacao={item.avaliacao}

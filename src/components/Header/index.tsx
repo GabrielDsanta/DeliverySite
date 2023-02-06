@@ -9,8 +9,13 @@ import {
 } from 'phosphor-react'
 import { ShoppingCartModal } from '../ShoppingCartModal'
 import { NavLink } from 'react-router-dom'
+import { ChangeEvent, useContext } from 'react'
+import { DeliveryContext } from '../../context/DeliveryContext'
 
 export function Header() {
+  const { CallSetSearchFilter } = useContext(DeliveryContext)
+
+
   return (
     <ContainerHeader>
       <HomeLink to={'/'}>
@@ -19,6 +24,7 @@ export function Header() {
       <ContainerSearch>
         <MagnifyingGlass size={20} color="#3C3C3C" weight="thin" />
         <SearchBar
+          onChange={(e: ChangeEvent<HTMLInputElement>) => CallSetSearchFilter(e.target.value)}
           type="text"
           name=""
           id=""

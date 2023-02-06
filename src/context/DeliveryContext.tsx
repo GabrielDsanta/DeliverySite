@@ -11,6 +11,7 @@ interface DeliveryContextType {
   cart: Order[]
   filterCategory: string;
   rate: string;
+  searchFilter: string;
   CallSetFoods: (data: Food[]) => void
   CallSetRestaurants: (data: Restaurant[]) => void
   CreateNewRestaurants: (data: Restaurant) => void
@@ -18,6 +19,7 @@ interface DeliveryContextType {
   HandleAddCart: (data: Order) => void
   CallSetFilter: (data: string) => void
   CallSetRate: (data: string) => void
+  CallSetSearchFilter: (data: string) => void
 }
 
 interface DeliveryProviderProps {
@@ -35,6 +37,7 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
   const [cart, setCart] = useState<Order[]>([])
   const [filterCategory, setFilterCategory] = useState('')
   const [rate, setRate] = useState('')
+  const [searchFilter, setSearchFilter] = useState('')
 
   function CallSetRestaurants(data: Restaurant[]) {
     setRestaurants(data)
@@ -59,6 +62,10 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
 
   function CallSetRate(data: string){
     setRate(data)
+  }
+
+  function CallSetSearchFilter(data: string){
+    setSearchFilter(data)
   }
 
   async function CreateNewRestaurants(data: Restaurant) {
@@ -91,6 +98,8 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
         HandleAddCart,
         CallSetFilter,
         CallSetRate,
+        searchFilter,
+        CallSetSearchFilter
       }}
     >
       {children}
