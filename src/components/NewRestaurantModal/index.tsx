@@ -1,18 +1,18 @@
 import * as z from 'zod'
 import * as Dialog from '@radix-ui/react-dialog'
+import { v4 } from 'uuid'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Overlay, Content, Inputs, CloseButton } from './styles'
 import { X } from 'phosphor-react'
 import { useContext } from 'react'
 import { DeliveryContext } from '../../context/DeliveryContext'
+
 const newRestaurantFormSchema = z.object({
   nome: z.string(),
   categoria: z.string(),
   sobre: z.string(),
   url: z.string(),
-  avaliacao: z.number(),
-  id: z.number(),
 })
 
 type newRestaurantInputs = z.infer<typeof newRestaurantFormSchema>
@@ -24,7 +24,16 @@ export function NewRestaurantModal() {
   })
 
   function handleCreateNewRestaurant(data: newRestaurantInputs) {
-    CreateNewRestaurants(data)
+    const { url, nome, categoria, sobre } = data
+    const newData = {
+      url,
+      nome,
+      categoria,
+      avaliacao: 5,
+      sobre,
+      id: v4(),
+    }
+    CreateNewRestaurants(newData)
     reset()
   }
 

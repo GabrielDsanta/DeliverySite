@@ -4,5 +4,5 @@ export interface Restaurant {
   categoria: string
   avaliacao: number
   sobre: string
-  id: number
+  id: string
 }
