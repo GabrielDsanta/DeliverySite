@@ -6,6 +6,7 @@ import { CardListProducts } from './components/CardListProducts'
 import { useContext, useEffect } from 'react'
 import { DeliveryContext } from '../../context/DeliveryContext'
 import { fetchDataFood } from '../../services/foods'
+import { Header } from '../../components/Header'
 
 export function Products() {
   const location = useLocation()
@@ -27,6 +28,7 @@ export function Products() {
 
   return (
     <ContainerProducts>
+      <Header icons="Product" />
       <RestaurantInformation>
         <img src={url} alt="" />
         <h1>{nome}</h1>

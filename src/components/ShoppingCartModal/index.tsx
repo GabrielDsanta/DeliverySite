@@ -18,7 +18,11 @@ import { priceFormatter } from '../../utils/formatter'
 
 export function ShoppingCartModal() {
   const total = useTotal()
-  const { cart } = useContext(DeliveryContext)
+  const { cart, CallSetDefaultValueOrder } = useContext(DeliveryContext)
+
+  function HandleResetCart() {
+    CallSetDefaultValueOrder()
+  }
 
   return (
     <Dialog.Portal>
@@ -50,7 +54,7 @@ export function ShoppingCartModal() {
           </TotalOfProducts>
           <NavLink to={'/Shopping'}>
             <CheckoutButton>
-              <button>Finalizar Compra</button>
+              <button onClick={HandleResetCart}>Finalizar Compra</button>
             </CheckoutButton>
           </NavLink>
         </Checkout>

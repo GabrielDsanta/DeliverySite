@@ -24,6 +24,7 @@ interface DeliveryContextType {
   HandleAddCart: (data: Order) => void
   CallSetFilter: (data: string) => void
   CallSetRate: (data: string) => void
+  CallSetDefaultValueOrder: () => void
   CallSetSearchFilter: (data: string) => void
 }
 
@@ -70,6 +71,10 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
     setSearchFilter(data)
   }
 
+  function CallSetDefaultValueOrder() {
+    setOrder(null)
+  }
+
   async function CreateNewRestaurants(data: Restaurant) {
     const { url, categoria, id, nome, sobre, avaliacao } = data
     const response = await apiRestaurants.post('/restaurantes', {
@@ -105,6 +110,7 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
         CallSetFilter,
         CallSetRate,
         searchFilter,
+        CallSetDefaultValueOrder,
         CallSetSearchFilter,
       }}
     >

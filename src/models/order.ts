@@ -1,7 +1,7 @@
-import { Food } from "./food";
+import { Food } from './food'
 
 export interface Order {
-    id: string;
-    product: Food;
-    amount: number
+  id: string
+  product: Food
+  amount: number
 }

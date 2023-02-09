@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const ContainerHeader = styled.header`
-  width: 100%;
+  width: 100vw;
   height: 3.4431rem;
 
   display: flex;
@@ -12,6 +12,7 @@ export const ContainerHeader = styled.header`
   color: ${(props) => props.theme.white};
   background: ${(props) => props.theme['blue-dark']};
   h1 {
+    color: ${(props) => props.theme.white};
     margin-left: 0.5rem;
   }
 
@@ -23,6 +24,19 @@ export const ContainerHeader = styled.header`
     justify-content: center;
 
     cursor: pointer;
+  }
+`
+export const ContainerToGoBack = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: ${(props) => props.theme.white};
+
+  svg {
+    margin-right: 0.5rem;
   }
 `
 export const ContainerSearch = styled.div`

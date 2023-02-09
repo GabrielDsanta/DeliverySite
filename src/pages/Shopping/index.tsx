@@ -1,24 +1,19 @@
 import { useContext } from 'react'
-import { CardProductCart } from '../../components/CardProductCart'
+import { Header } from '../../components/Header'
 import { DeliveryContext } from '../../context/DeliveryContext'
+import { Cards } from './components/Cards'
 import { ContainerMyShopping, Products } from './styles'
 
 export function Shopping() {
   const { cart } = useContext(DeliveryContext)
+  console.log(cart)
   return (
     <ContainerMyShopping>
+      <Header icons="Shopping" />
       <Products>
-        {cart?.length! > 0 &&
-          cart!.map((item) => {
-            return (
-              <CardProductCart
-                key={item.id}
-                amount={item.amount}
-                id={item.id}
-                product={item.product}
-              />
-            )
-          })}
+        {cart.map((item) => {
+          return <Cards key={item.id} id={item.product.idRestaurante} />
+        })}
       </Products>
     </ContainerMyShopping>
   )
