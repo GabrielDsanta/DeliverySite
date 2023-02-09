@@ -57,8 +57,24 @@ export function CardList({ restaurants }: CardListProps) {
       return setFilteredList(searchFilterList)
     }
 
-    if(searchFilter.length === 0 && rate === '' && filterCategory === ''){
+    if (searchFilter.length === 0 && rate === '' && filterCategory === '') {
       setFilteredList([])
+    }
+
+    if (filterCategory !== '' && rate !== '') {
+      filteredList.filter((item) => {
+
+        if (rate === 'Melhor Avalição') {
+          const growingList = filteredList.sort((a, b) => b.avaliacao - a.avaliacao)
+          return setFilteredList(growingList)
+        }
+
+        else {
+          const descendingList = filteredList.sort((a, b) => a.avaliacao - b.avaliacao)
+          return setFilteredList(descendingList)
+        }
+
+      })
     }
 
   }, [filterCategory, rate, searchFilter])

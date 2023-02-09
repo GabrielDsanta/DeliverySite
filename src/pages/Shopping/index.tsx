@@ -6,13 +6,13 @@ import { ContainerMyShopping, Products } from './styles'
 
 export function Shopping() {
   const { cart } = useContext(DeliveryContext)
-  console.log(cart)
+
   return (
     <ContainerMyShopping>
       <Header icons="Shopping" />
       <Products>
         {cart.map((item) => {
-          return <Cards key={item.id} id={item.product.idRestaurante} />
+          return <Cards key={item.id} id={item.product.idRestaurante!} />
         })}
       </Products>
     </ContainerMyShopping>

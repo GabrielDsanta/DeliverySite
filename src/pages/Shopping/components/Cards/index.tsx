@@ -9,7 +9,7 @@ interface CardsProps {
 
 export function Cards({ id }: CardsProps) {
   const { restaurants } = useContext(DeliveryContext)
-  console.log(id)
+  
   const restaurant = restaurants?.find((item) => item.id === id)
 
   return (
