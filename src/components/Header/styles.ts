@@ -73,4 +73,11 @@ export const SearchBar = styled.input`
 export const HomeLink = styled(NavLink)`
   color: white;
   text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    color: white;
+  }
 `

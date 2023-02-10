@@ -30,6 +30,19 @@ export const Content = styled(Dialog.Content)`
 
   color: black;
   background: ${(props) => props.theme['dark-grey']};
+
+  @media (max-width: 1250px) {
+    top: 50%;
+    left: 70%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+  }
+  @media (max-width: 800px) {
+    top: 50%;
+    left: 60%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+  }
 `
 export const CloseButton = styled(Dialog.Close)`
   gap: 1rem;
@@ -92,19 +105,14 @@ export const TotalOfProducts = styled.div`
   font-weight: 600;
   font-size: 1.5rem;
 `
-export const CheckoutButton = styled(Dialog.Close)`
+export const CheckoutButton = styled.button`
+  width: 20rem;
+  height: 2.5rem;
+  margin-top: 1rem;
+
   border: 0;
   outline: none;
-  background: transparent;
-  button {
-    width: 20rem;
-    height: 2.5rem;
-    margin-top: 1rem;
-
-    border: 0;
-    outline: none;
-    cursor: pointer;
-    background: red;
-    color: ${(props) => props.theme.white};
-  }
+  cursor: pointer;
+  background: red;
+  color: ${(props) => props.theme.white};
 `

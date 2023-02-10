@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { useTotal } from '../../hooks/useTotal'
 import { CardProductCart } from '../CardProductCart'
 import { DeliveryContext } from '../../context/DeliveryContext'
+import { InformationUserModal } from '../InformationUserModal'
 import {
   Content,
   Overlay,
@@ -13,16 +14,11 @@ import {
   Checkout,
   CheckoutButton,
 } from './styles'
-import { NavLink } from 'react-router-dom'
 import { priceFormatter } from '../../utils/formatter'
 
 export function ShoppingCartModal() {
   const total = useTotal()
-  const { cart, CallSetDefaultValueOrder } = useContext(DeliveryContext)
-
-  function HandleResetCart() {
-    CallSetDefaultValueOrder()
-  }
+  const { cart } = useContext(DeliveryContext)
 
   return (
     <Dialog.Portal>
@@ -52,11 +48,12 @@ export function ShoppingCartModal() {
               <p>{priceFormatter.format(total!.total)}</p>
             )}
           </TotalOfProducts>
-          <NavLink to={'/Shopping'}>
-            <CheckoutButton>
-              <button onClick={HandleResetCart}>Finalizar Compra</button>
-            </CheckoutButton>
-          </NavLink>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <CheckoutButton>Finalizar Compra</CheckoutButton>
+            </Dialog.Trigger>
+            <InformationUserModal />
+          </Dialog.Root>
         </Checkout>
       </Content>
     </Dialog.Portal>

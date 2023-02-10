@@ -5,13 +5,13 @@ import { Cards } from './components/Cards'
 import { ContainerMyShopping, Products } from './styles'
 
 export function Shopping() {
-  const { cart } = useContext(DeliveryContext)
+  const { requests } = useContext(DeliveryContext)
 
   return (
     <ContainerMyShopping>
       <Header icons="Shopping" />
       <Products>
-        {cart.map((item) => {
+        {requests.map((item) => {
           return <Cards key={item.id} id={item.product.idRestaurante!} />
         })}
       </Products>

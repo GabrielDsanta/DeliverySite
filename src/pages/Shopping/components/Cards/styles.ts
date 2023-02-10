@@ -1,16 +1,21 @@
 import styled from 'styled-components'
 
 export const ContainerCards = styled.div`
-  margin: 1rem;
   width: 25rem;
   height: auto;
-
+  margin: 1rem;
   display: flex;
   align-items: center;
   justify-content: start;
   flex-direction: column;
 
   background: ${(props) => props.theme.white};
+  @media (max-width: 1250px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 `
 export const Information = styled.div`
   width: 100%;

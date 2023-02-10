@@ -51,6 +51,13 @@ export const RestaurantInformation = styled.div`
 
     color: ${(props) => props.theme.yellow};
   }
+
+  @media (max-width: 900px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 `
 export const ProductList = styled.div`
   display: flex;

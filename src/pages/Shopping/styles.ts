@@ -27,4 +27,11 @@ export const Products = styled.div`
     background-color: black;
     border-radius: 6px;
   }
+
+  @media (max-width: 1250px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 `

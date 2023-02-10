@@ -4,9 +4,9 @@ import { Restaurant } from '../models/restaurant'
 import { apiRestaurants } from '.././services/api'
 import { Order } from '../models/order'
 
-const localStorageCart =
-  localStorage.getItem('Cart') !== null
-    ? JSON.parse(localStorage.getItem('Cart')!)
+const localStorageRequests =
+  localStorage.getItem('Requests') !== null
+    ? JSON.parse(localStorage.getItem('Requests')!)
     : []
 
 interface DeliveryContextType {
@@ -17,6 +17,7 @@ interface DeliveryContextType {
   filterCategory: string
   rate: string
   searchFilter: string
+  requests: Order[]
   CallSetFoods: (data: Food[]) => void
   CallSetRestaurants: (data: Restaurant[]) => void
   CreateNewRestaurants: (data: Restaurant) => void
@@ -40,10 +41,11 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
   const [foods, setFoods] = useState<Food[]>([])
   const [restaurants, setRestaurants] = useState<Restaurant[]>([])
   const [order, setOrder] = useState<Order | null>(null)
-  const [cart, setCart] = useState<Order[]>(localStorageCart)
+  const [cart, setCart] = useState<Order[]>([])
   const [filterCategory, setFilterCategory] = useState('')
   const [rate, setRate] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
+  const [requests, setRequests] = useState<Order[]>(localStorageRequests)
 
   function CallSetRestaurants(data: Restaurant[]) {
     setRestaurants(data)
@@ -72,7 +74,8 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
   }
 
   function CallSetDefaultValueOrder() {
-    setOrder(null)
+    setRequests((state) => [...state, ...cart])
+    setCart([])
   }
 
   async function CreateNewRestaurants(data: Restaurant) {
@@ -90,8 +93,8 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
   }
 
   useEffect(() => {
-    window.localStorage.setItem('Cart', JSON.stringify(cart))
-  }, [cart])
+    window.localStorage.setItem('Requests', JSON.stringify(requests))
+  }, [requests])
 
   return (
     <DeliveryContext.Provider
@@ -101,6 +104,7 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
         order,
         cart,
         rate,
+        requests,
         filterCategory,
         CallSetFoods,
         CallSetRestaurants,

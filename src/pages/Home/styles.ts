@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const ContainerHome = styled.div`
   width: 65vw;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
 
   display: flex;
@@ -14,5 +14,4 @@ export const ContainerHome = styled.div`
 
 export const ContainerRestaurants = styled.main`
   display: grid;
-  /* grid-template-columns: repeat(2, 1fr); */
 `

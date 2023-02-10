@@ -13,7 +13,6 @@ export function CardList({ restaurants }: CardListProps) {
   const [filteredList, setFilteredList] = useState<Restaurant[]>([])
 
   useEffect(() => {
-
     if (filterCategory !== '') {
       const filteredList = restaurants!.filter((item) => {
         return item.categoria === filterCategory
@@ -24,17 +23,17 @@ export function CardList({ restaurants }: CardListProps) {
 
     if (rate !== '') {
       restaurants!.filter((item) => {
-
         if (rate === 'Melhor Avalição') {
-          const growingList = restaurants!.sort((a, b) => b.avaliacao - a.avaliacao)
+          const growingList = restaurants!.sort(
+            (a, b) => b.avaliacao - a.avaliacao,
+          )
           return setFilteredList(growingList)
-        }
-
-        else {
-          const descendingList = restaurants!.sort((a, b) => a.avaliacao - b.avaliacao)
+        } else {
+          const descendingList = restaurants!.sort(
+            (a, b) => a.avaliacao - b.avaliacao,
+          )
           return setFilteredList(descendingList)
         }
-
       })
     }
 
@@ -63,26 +62,25 @@ export function CardList({ restaurants }: CardListProps) {
 
     if (filterCategory !== '' && rate !== '') {
       filteredList.filter((item) => {
-
         if (rate === 'Melhor Avalição') {
-          const growingList = filteredList.sort((a, b) => b.avaliacao - a.avaliacao)
+          const growingList = filteredList.sort(
+            (a, b) => b.avaliacao - a.avaliacao,
+          )
           return setFilteredList(growingList)
-        }
-
-        else {
-          const descendingList = filteredList.sort((a, b) => a.avaliacao - b.avaliacao)
+        } else {
+          const descendingList = filteredList.sort(
+            (a, b) => a.avaliacao - b.avaliacao,
+          )
           return setFilteredList(descendingList)
         }
-
       })
     }
-
   }, [filterCategory, rate, searchFilter])
 
   return (
     <Container>
-      {filteredList!.length === 0 ? (
-        restaurants?.map((item) => {
+      {filteredList!.length === 0
+        ? restaurants?.map((item) => {
           return (
             <Card
               avaliacao={item.avaliacao}
@@ -95,23 +93,19 @@ export function CardList({ restaurants }: CardListProps) {
             />
           )
         })
-      ) :
-        (
-          filteredList!.map((item) => {
-            return (
-              <Card
-                avaliacao={item.avaliacao}
-                categoria={item.categoria}
-                id={item.id}
-                nome={item.nome}
-                sobre={item.sobre}
-                url={item.url}
-                key={item.id}
-              />
-            )
-          })
-        )
-      }
+        : filteredList!.map((item) => {
+          return (
+            <Card
+              avaliacao={item.avaliacao}
+              categoria={item.categoria}
+              id={item.id}
+              nome={item.nome}
+              sobre={item.sobre}
+              url={item.url}
+              key={item.id}
+            />
+          )
+        })}
     </Container>
   )
 }
