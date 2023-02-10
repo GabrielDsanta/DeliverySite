@@ -1,14 +1,14 @@
 ## DeliverySite:
 
 Projeto desenvolvido em 
-  -React + TypeScript
-  -React-Router-Dom
-  -Styled-Components
-  -React-Hook-Form + ZodResolver
-  -Zod 
-  -Radix-ui
-  -Vite
-  -Axios
+  - React + TypeScript
+  - React-Router-Dom
+  - Styled-Components
+  - React-Hook-Form + ZodResolver
+  - Zod 
+  - Radix-ui
+  - Vite
+  - Axios
 
 ## Devs:
 
